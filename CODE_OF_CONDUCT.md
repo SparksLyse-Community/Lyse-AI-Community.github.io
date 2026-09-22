@@ -2,7 +2,7 @@
 
 ## Notre engagement
 
-Nous voulons que les contributions au projet Lyse.AI se déroulent dans un environnement ouvert, accueillant et respectueux, quels que soient l'origine, l'identité, l'expression de genre, l'orientation sexuelle, le handicap, l'apparence physique, l'âge, la religion, les compétences techniques ou la situation personnelle des participants.
+Nous voulons que les contributions au projet SparkLyse se déroulent dans un environnement ouvert, accueillant et respectueux, quels que soient l'origine, l'identité, l'expression de genre, l'orientation sexuelle, le handicap, l'apparence physique, l'âge, la religion, les compétences techniques ou la situation personnelle des participants.
 
 En participant à ce projet, vous acceptez de contribuer à un espace sûr, constructif et accessible à toutes et tous.
 
@@ -15,6 +15,8 @@ En participant à ce projet, vous acceptez de contribuer à un espace sûr, cons
 - Respecter les règles du projet, la vie privée et les informations confidentielles.
 - Signaler rapidement tout comportement qui pourrait nuire à la communauté ou à la sécurité du projet.
 
+
+
 ## Comportements inacceptables
 
 Les comportements suivants ne sont pas acceptés :
@@ -26,6 +28,8 @@ Les comportements suivants ne sont pas acceptés :
 - Le trolling, les provocations répétées ou les interruptions volontaires des échanges.
 - La divulgation de secrets, de clés API, de données personnelles ou de toute autre information sensible.
 - Toute conduite qui pourrait compromettre la sécurité du site, du dépôt ou de ses utilisateurs.
+
+
 
 ## Champ d'application
 

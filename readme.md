@@ -1,18 +1,22 @@
-# Site web de Lyse.AI
+# Site web de SparkLyse
 
-Site vitrine et prototype de chat pour Lyse.AI, un projet autour de l'intelligence artificielle et de l'open source. Le dépôt contient principalement un export statique réalisé avec Framer, complété par quelques scripts JavaScript et un serveur Node.js minimal pour le développement local.
+Site vitrine et prototype de chat pour SparkLyse, un projet autour de l'intelligence artificielle et de l'open source. Le dépôt contient principalement un export statique réalisé avec Framer, complété par quelques scripts JavaScript et un serveur Node.js minimal pour le développement local.
 
 ## État du projet
 
-- La page d'accueil est disponible dans [`index.html`](index.html).
-- Le chat de démonstration est disponible dans [`chat.html`](chat.html).
+- La page d'accueil est disponible dans `[index.html](index.html)`.
+- Le chat de démonstration est disponible dans `[chat.html](chat.html)`.
 - Le chat fonctionne actuellement en **mode TEST** : il simule une réponse et n'est connecté à aucun modèle d'IA.
-- Le mode PROD affiche un aperçu de la requête prévue. La connexion à une API réelle reste à finaliser dans [`scripts/modules/chat.js`](scripts/modules/chat.js).
+- Le mode PROD affiche un aperçu de la requête prévue. La connexion à une API réelle reste à finaliser dans `[scripts/modules/chat.js](scripts/modules/chat.js)`.
+
+
 
 ## Prérequis
 
 - Node.js 18 ou une version plus récente recommandée
 - npm
+
+
 
 ## Installation et démarrage
 
@@ -29,7 +33,7 @@ Le site sera ensuite accessible à l'adresse [http://localhost:3000](http://loca
 PORT=4000 npm run serve
 ```
 
-Le serveur est implémenté dans [`serve.js`](serve.js). Il sert les fichiers statiques depuis la racine du projet, fournit une page 404 personnalisée et prend en charge les extensions courantes utilisées par l'export Framer.
+Le serveur est implémenté dans `[serve.js](serve.js)`. Il sert les fichiers statiques depuis la racine du projet, fournit une page 404 personnalisée et prend en charge les extensions courantes utilisées par l'export Framer.
 
 Pour un aperçu rapide sans installer de dépendance, un serveur statique comme `npx serve` peut également être utilisé :
 
@@ -37,20 +41,24 @@ Pour un aperçu rapide sans installer de dépendance, un serveur statique comme 
 npx serve .
 ```
 
+
+
 ## Pages principales
 
-| URL | Fichier | Description |
-| --- | --- | --- |
-| `/` | [`index.html`](index.html) | Page d'accueil Lyse.AI |
-| `/chat.html` | [`chat.html`](chat.html) | Interface de chat de démonstration |
-| `/train.html` | [`subpages/train.html`](subpages/train.html) | Page secondaire exportée |
-| `/404.html` | [`subpages/404.html`](subpages/404.html) | Page affichée lorsqu'une ressource est introuvable |
+
+| URL           | Fichier                                      | Description                                        |
+| ------------- | -------------------------------------------- | -------------------------------------------------- |
+| `/`           | `[index.html](index.html)`                   | Page d'accueil SparkLyse                           |
+| `/chat.html`  | `[chat.html](chat.html)`                     | Interface de chat de démonstration                 |
+| `/train.html` | `[subpages/train.html](subpages/train.html)` | Page secondaire exportée                           |
+| `/404.html`   | `[subpages/404.html](subpages/404.html)`     | Page affichée lorsqu'une ressource est introuvable |
+
 
 Avec le serveur Node fourni, les URL sans extension correspondent aux fichiers de même nom présents dans `subpages/`. Par exemple, `/train` sert `subpages/train.html`.
 
 ## Configuration du chat
 
-Le script [`scripts/modules/chat.js`](scripts/modules/chat.js) tente de charger un fichier `.env` à la racine du site. Les variables reconnues sont :
+Le script `[scripts/modules/chat.js](scripts/modules/chat.js)` tente de charger un fichier `.env` à la racine du site. Les variables reconnues sont :
 
 ```dotenv
 APP_MODE=test
@@ -82,6 +90,8 @@ Ce fichier est chargé par le navigateur avec `fetch`. Toute valeur qui y figure
 └── data/                      # Données statiques du projet
 ```
 
+
+
 ## Scripts npm
 
 Le projet expose actuellement les scripts suivants :
@@ -99,8 +109,10 @@ Il n'y a pas encore de scripts `dev`, `build`, `preview`, `lint` ou `format`. Le
 2. Ouvrez la page d'accueil et `/chat.html` dans un navigateur.
 3. Vérifiez les liens, les ressources et le comportement responsive.
 
+
+
 ## Crédits
 
-Projet Framer Export / Lyse.AI v1 WEB.
+Projet Framer Export / SparkLyse v1 WEB.
 
 Merci au projet [FramerExport](https://github.com/danbenba/FramerExport) pour l'outil de conversion de Framer vers du code statique, ainsi qu'à Arthur pour son template Framer.
