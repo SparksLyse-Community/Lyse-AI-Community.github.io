@@ -150,15 +150,15 @@ export default function TrainingDashboard({ alt = "Training Status" }: TrainingD
     triggerRefresh();
   };
 
-  // Compute SVG sparkline points for loss curve
+  // Compute SVG sparkline points for loss curve filling the width/height
   const losses = historyData.map(d => Number(d.loss) || 0);
   const minLoss = losses.length > 0 ? Math.min(...losses) : 0;
   const maxLoss = losses.length > 0 ? Math.max(...losses) : 1;
   const lossRange = maxLoss - minLoss || 1;
 
-  const width = 600;
-  const height = 180;
-  const padding = 20;
+  const width = 1000;
+  const height = 280;
+  const padding = 0;
 
   const points = losses.map((loss, i) => {
     const x = padding + (i / (losses.length > 1 ? losses.length - 1 : 1)) * (width - 2 * padding);
@@ -283,7 +283,7 @@ export default function TrainingDashboard({ alt = "Training Status" }: TrainingD
             <span className="text-[10px] text-white/40">{historyData.length} points enregistrés</span>
           </div>
           
-          <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-white/2.5 backdrop-blur-sm p-6 flex flex-col items-center justify-center min-h-[240px]">
+          <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-white/2.5 backdrop-blur-sm pt-8 pb-4 px-0 flex flex-col items-center justify-center min-h-[280px]">
             {apiLoading && losses.length === 0 ? (
               <div className="flex flex-col items-center text-center gap-4 py-12">
                 <RefreshCw className="w-6 h-6 text-white/40 animate-spin" />
@@ -301,11 +301,11 @@ export default function TrainingDashboard({ alt = "Training Status" }: TrainingD
               </div>
             ) : (
               <div className="w-full flex flex-col items-center">
-                <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-48 overflow-visible">
+                <svg viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="none" className="w-full h-64 overflow-visible">
                   {/* Grid lines */}
-                  <line x1={padding} y1={padding} x2={width - padding} y2={padding} stroke="rgba(255,255,255,0.05)" strokeDasharray="4 4" />
-                  <line x1={padding} y1={height / 2} x2={width - padding} y2={height / 2} stroke="rgba(255,255,255,0.05)" strokeDasharray="4 4" />
-                  <line x1={padding} y1={height - padding} x2={width - padding} y2={height - padding} stroke="rgba(255,255,255,0.1)" />
+                  <line x1={0} y1={0} x2={width} y2={0} stroke="rgba(255,255,255,0.05)" strokeDasharray="4 4" />
+                  <line x1={0} y1={height / 2} x2={width} y2={height / 2} stroke="rgba(255,255,255,0.05)" strokeDasharray="4 4" />
+                  <line x1={0} y1={height} x2={width} y2={height} stroke="rgba(255,255,255,0.1)" />
 
                   {/* Gradient fill under curve */}
                   <defs>
@@ -318,7 +318,7 @@ export default function TrainingDashboard({ alt = "Training Status" }: TrainingD
                   {losses.length > 1 && (
                     <>
                       <polygon 
-                        points={`${padding},${height - padding} ${points} ${width - padding},${height - padding}`} 
+                        points={`0,${height} ${points} ${width},${height}`} 
                         fill="url(#lossGradient)" 
                       />
                       <polyline
@@ -332,7 +332,7 @@ export default function TrainingDashboard({ alt = "Training Status" }: TrainingD
                     </>
                   )}
                 </svg>
-                <div className="w-full flex items-center justify-between text-[10px] text-white/40 mt-4 px-2">
+                <div className="w-full flex items-center justify-between text-[10px] text-white/40 mt-4 px-6">
                   <span>Min Loss: {minLoss.toFixed(4)}</span>
                   <span>Dernière valeur: {losses[losses.length - 1]?.toFixed(4) || "—"}</span>
                   <span>Max Loss: {maxLoss.toFixed(4)}</span>
@@ -341,7 +341,7 @@ export default function TrainingDashboard({ alt = "Training Status" }: TrainingD
             )}
             
             {/* Overlay info */}
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between pointer-events-none">
+            <div className="absolute bottom-4 left-6 right-6 flex items-center justify-between pointer-events-none">
               <div className="px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-[9px] uppercase tracking-widest text-white/60">
                 API Live Feed • {new Date(timestamp).toLocaleTimeString()}
               </div>
