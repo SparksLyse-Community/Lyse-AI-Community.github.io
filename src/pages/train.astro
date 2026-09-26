@@ -1,6 +1,7 @@
 ---
 import TrainingDashboard from "../components/TrainingDashboard";
 import Layout from "../layouts/Layout.astro";
+import FadeInBlurWord from "../components/animation/FadeInBlurWord";
 ---
 
 <Layout
@@ -8,22 +9,36 @@ import Layout from "../layouts/Layout.astro";
   description="Suivez en direct l'entraînement des modèles open-source de SparksLyse, l'évolution de la loss, et les flux de télémétrie de nos clusters de calcul."
   ogImage="images/ogImage.jpg"
 >
-  <main class="min-h-screen px-4 py-12 sm:px-6 lg:px-8 text-white relative overflow-hidden">
-
-    <div class="mx-auto max-w-4xl text-center mb-10 relative z-10">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e8ff9c]/10 border border-[#e8ff9c]/20 text-[#e8ff9c] text-xs font-mono mb-4">
-        <span class="w-2 h-2 rounded-full bg-[#e8ff9c] animate-pulse"></span>
-        <span>Open-Source AI Telemetry</span>
-      </div>
-      <h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4">
-        Centre de Contrôle & <span class="text-[#e8ff9c]">Entraînement Live</span>
-      </h1>
-      <p class="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto">
-        Plongez au cœur des clusters de calcul de SparksLyse. Visualisez en temps réel l'avancement des poids, les courbes de loss, les métriques GPU et les logs de nos modèles open-source.
-      </p>
+  <main class="mx-auto flex w-full max-w-300 flex-col gap-16 px-6 py-24 md:px-10 md:py-32 lg:px-16">
+    <div class="max-w-4xl">
+      <span class="mb-5 block text-xs uppercase tracking-[0.18em] text-white/45">
+        Entraînement
+      </span>
+      <FadeInBlurWord
+        as="h1"
+        content={[
+          { text: "Centre de Contrôle & " },
+          {
+            text: "Entraînement en direct",
+            style: { color: "rgb(232, 255, 156)" },
+          },
+        ]}
+        className="max-w-2xl font-sans text-4xl font-normal leading-[1.1] tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl justify-start"
+        client:load
+      />
+      <FadeInBlurWord
+        as="p"
+        content={[
+          {
+            text: "Plongez au cœur de l'apprentissage de SparksLyse. Visualisez en temps réel l'avancement des poids, les courbes de perte et les métriques de nos modèles open-source.",
+          },
+        ]}
+        className="mt-6 max-w-2xl text-sm leading-[1.4] text-white/60 sm:text-base"
+        client:load
+      />
     </div>
 
-    <div class="mx-auto max-w-6xl relative z-10">
+    <div class="w-full relative z-10">
       <TrainingDashboard 
         imageUrl="https://marvideo.fr/lyseai-api/status.php" 
         alt="Centre d'entraînement LyseAI en temps réel" 
@@ -31,10 +46,13 @@ import Layout from "../layouts/Layout.astro";
       />
     </div>
 
-    <div class="mx-auto max-w-3xl mt-12 p-6 rounded-2xl bg-[#141414]/90 border border-white/10 text-center text-xs text-zinc-400 relative z-10 backdrop-blur-md">
-      <p class="font-medium text-zinc-300 mb-1">Transparence & Open-Source</p>
-      <p>
-        Chez SparksLyse, chaque étape d'entraînement est transparente. Ce tableau de bord se connecte directement à nos daemons de calcul pour vous offrir une visibilité totale sur l'évolution de nos modèles.
+    <div class="max-w-3xl border-t border-white/10 pt-12">
+      <span class="mb-5 block text-xs uppercase tracking-[0.18em] text-white/45">
+        Transparence
+      </span>
+      <h2 class="text-xl font-normal text-white mb-4">Engagement Open-Source</h2>
+      <p class="text-sm leading-relaxed text-white/50 max-w-2xl">
+        Chez SparksLyse, chaque étape d'entraînement est transparente. Ce tableau de bord se connecte directement à nos clusters de calcul pour vous offrir une visibilité totale sur l'évolution de nos modèles, fidèle à notre philosophie d'ouverture.
       </p>
     </div>
   </main>
