@@ -94,7 +94,7 @@ export default function TrainingDashboard({ imageUrl, alt }: TrainingDashboardPr
   const [logs, setLogs] = useState<string[]>([
     "[2026-09-26 14:30:12] [INFO] Initializing distributed training cluster (H100 x8)...",
     "[2026-09-26 14:30:45] [INFO] Dataset loaded: SparksLyse-OpenCorpus-v3 (1.2 TB tokens)",
-    "[2026-09-26 14:31:02] [SUCCESS] Model architecture compiled: LyseAI-7B-Instruct",
+    "[2026-09-26 14:31:02] [SUCCESS] Model architecture compiled: SparksLyse-7B-Instruct",
     "[2026-09-26 14:31:30] [INFO] Starting Epoch 42/100 - Batch size: 1024 - LR: 1.2e-4",
     "[2026-09-26 14:32:05] [METRIC] Step 4200/10000 - Loss: 0.0342 - Perplexity: 1.034 - GradNorm: 0.412",
     "[2026-09-26 14:33:10] [CHECKPOINT] Checkpoint saved successfully to s3://lyse-weights/v1.4/ep42"
@@ -128,7 +128,7 @@ export default function TrainingDashboard({ imageUrl, alt }: TrainingDashboardPr
           </div>
           <div>
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
-              LyseAI-v1.4 Live Cluster 
+              SparksLyse Live Cluster 
               <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#e8ff9c]/10 text-[#e8ff9c] border border-[#e8ff9c]/20 font-mono">
                 EN DIRECT
               </span>
@@ -337,7 +337,7 @@ export default function TrainingDashboard({ imageUrl, alt }: TrainingDashboardPr
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs font-mono">
                 <div className="bg-zinc-950 p-3 rounded-lg border border-white/5">
                   <span className="text-zinc-500 block mb-1">Architecture</span>
-                  <span className="text-zinc-200 font-semibold">LyseAI-7B Transformer</span>
+                  <span className="text-zinc-200 font-semibold">SparksLyse-7B Transformer</span>
                 </div>
                 <div className="bg-zinc-950 p-3 rounded-lg border border-white/5">
                   <span className="text-zinc-500 block mb-1">Dataset d'entraînement</span>
