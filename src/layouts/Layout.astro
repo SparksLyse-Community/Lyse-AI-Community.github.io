@@ -22,7 +22,7 @@ const ogName =
         .replaceAll("/", "-")
         .replace(/[^a-zA-Z0-9-_]/g, "-");
 
-const ogImage = `${siteUrl}/og/${ogName}.png`;
+const ogImage = `${siteUrl.origin}/og/${ogName}.png`;
 
 import "../styles/global.css";
 import "../styles/fonts.css";
