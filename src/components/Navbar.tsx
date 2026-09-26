@@ -115,6 +115,10 @@ export default function Navbar() {
             FAQ
           </Button>
 
+          <Button variant="link" size="lg" href={`${import.meta.env.BASE_URL}#soutien`} className="rounded-lg">
+            Soutenir le projet
+          </Button>
+
           <Button variant="link" size="lg" href={`${import.meta.env.BASE_URL}blog`}>
             Blog
           </Button>
@@ -200,6 +204,10 @@ export default function Navbar() {
 
           <Button variant="link" size="lg" href={`${import.meta.env.BASE_URL}#faq`} className="rounded-lg">
             FAQ
+          </Button>
+
+          <Button variant="link" size="lg" href={`${import.meta.env.BASE_URL}#soutien`} className="rounded-lg">
+            Soutenir le projet
           </Button>
 
           <Button variant="link" size="lg" href={`${import.meta.env.BASE_URL}blog`} className="rounded-lg">
