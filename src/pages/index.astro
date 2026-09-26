@@ -68,9 +68,15 @@ const benefits: { title: string; description: string; logo: number }[] = [
       >
         <div class="flex w-full flex-col items-center gap-4">
           <FadeInBlurWord
+            as="h2"
+            content={[{ text: "Certaines infos sur ce site sont fausse ou partiellement fausse ou sont prevu pour le futur" }]}
+            className="font-[Monospace] bg-[#0a0a0a]/20 border border-[#0a0a0a]/40 rounded-2xl p-4 justify-center text-[10px] font-normal leading-[1.2] tracking-[-0.03em] text-white sm:text-[18px] lg:text-[16px] text-center"
+            client:load
+          />
+          <FadeInBlurWord
             as="h1"
             content={[{ text: "Quand l'IA rencontre l'Open-Source" }]}
-            className="font-sans justify-center text-[40px] font-normal leading-[1.2] tracking-[-0.03em] text-white sm:text-[48px] lg:text-[56px] text-center"
+            className="font-sans justify-center text-[40px] rounded-2xl p-4 font-normal leading-[1.2] tracking-[-0.03em] text-white sm:text-[48px] lg:text-[56px] text-center"
             client:load
           />
           <FadeInBlurWord
