@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { ImageMetadata } from "astro";
 
 import featureImage1 from "../assets/images/feature1.jpg";
@@ -6,7 +6,7 @@ import featureImage2 from "../assets/images/feature2.jpg";
 import featureImage3 from "../assets/images/feature3.jpg";
 import featureImage4 from "../assets/images/feature4.jpg";
 
-export default function FeatureTab() {
+export default function FeatureSlider() {
   const features: {
     title: string;
     description: string;
@@ -34,9 +34,31 @@ export default function FeatureTab() {
     },
   ];
 
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const activeFeature = features[activeTab];
+  const scrollToSlide = (index: number) => {
+    setActiveIndex(index);
+    if (scrollContainerRef.current) {
+      const slideWidth = scrollContainerRef.current.clientWidth;
+      scrollContainerRef.current.scrollTo({
+        left: slideWidth * index,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const slideWidth = scrollContainerRef.current.clientWidth;
+      const newIndex = Math.round(
+        scrollContainerRef.current.scrollLeft / slideWidth,
+      );
+      if (newIndex !== activeIndex) {
+        setActiveIndex(newIndex);
+      }
+    }
+  };
 
   return (
     <div>
@@ -54,7 +76,7 @@ export default function FeatureTab() {
         aria-label="Fonctionnalités"
       >
         {features.map((feature, idx) => {
-          const isActive = idx === activeTab;
+          const isActive = idx === activeIndex;
 
           return (
             <button
@@ -62,7 +84,7 @@ export default function FeatureTab() {
               type="button"
               role="tab"
               aria-selected={isActive}
-              onClick={() => setActiveTab(idx)}
+              onClick={() => scrollToSlide(idx)}
               className={`
                 relative
                 shrink-0
@@ -102,119 +124,143 @@ export default function FeatureTab() {
       </div>
 
       <div className="mt-4 sm:mt-6">
-        <article
-          key={activeFeature.title}
-          role="tabpanel"
+        <div
+          ref={scrollContainerRef}
+          onScroll={handleScroll}
           className="
             flex
             w-full
-            flex-col
-            gap-6
-            rounded-2xl
-            border
-            border-white/5
-            bg-white/2.5
-            p-4
-            transition
-            hover:border-white/10
-            hover:bg-white/4.5
-
-            sm:p-6
-
-            md:flex-row
-            md:items-center
-            md:gap-8
-            md:p-8
-
-            lg:p-9
+            snap-x
+            snap-mandatory
+            overflow-x-auto
+            scroll-smooth
+            scrollbar-none
           "
         >
-          <div
-            className="
-              w-full
-              shrink-0
-              overflow-hidden
-              rounded-xl
-
-              md:w-[45%]
-              lg:w-[48%]
-            "
-          >
-            <img
-              src={activeFeature.image.src}
-              alt={activeFeature.title}
-              width={516}
-              height={396.8}
-              loading="lazy"
+          {features.map((feature) => (
+            <div
+              key={feature.title}
               className="
-                block
-                h-auto
                 w-full
-                rounded-xl
-                object-cover
-                transition-transform
-                duration-500
-                hover:scale-[1.02]
-              "
-            />
-          </div>
-
-          <div
-            className="
-              flex
-              min-w-0
-              w-full
-              flex-col
-              items-start
-              md:flex-1
-            "
-          >
-            <p
-              className="
-                mb-2
-                text-lg
-                text-[#858585]
-
-                sm:text-xl
+                shrink-0
+                snap-center
+                px-0.5
               "
             >
-              {activeFeature.title}
-            </p>
+              <article
+                className="
+                  flex
+                  w-full
+                  flex-col
+                  gap-6
+                  rounded-2xl
+                  border
+                  border-white/5
+                  bg-white/2.5
+                  p-4
+                  transition
+                  hover:border-white/10
+                  hover:bg-white/4.5
 
-            <p
-              className="
-                mb-6
-                max-w-md
-                text-base
-                leading-7
-                text-white
+                  sm:p-6
 
-                sm:mb-8
-                sm:text-lg
+                  md:flex-row
+                  md:items-center
+                  md:gap-8
+                  md:p-8
 
-                lg:text-xl
-              "
-            >
-              {activeFeature.description}
-            </p>
+                  lg:p-9
+                "
+              >
+                <div
+                  className="
+                    w-full
+                    shrink-0
+                    overflow-hidden
+                    rounded-xl
 
-            <a
-              href={`${import.meta.env.BASE_URL}#final-cta`}
-              className="
-                inline-flex
-                items-center
-                gap-1
-                text-sm
-                text-[#e8ff9c]
-                transition-opacity
-                hover:opacity-70
-              "
-            >
-              Commencer
-              <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </article>
+                    md:w-[45%]
+                    lg:w-[48%]
+                  "
+                >
+                  <img
+                    src={feature.image.src}
+                    alt={feature.title}
+                    width={516}
+                    height={396.8}
+                    loading="lazy"
+                    className="
+                      block
+                      h-auto
+                      w-full
+                      rounded-xl
+                      object-cover
+                      transition-transform
+                      duration-500
+                      hover:scale-[1.02]
+                    "
+                  />
+                </div>
+
+                <div
+                  className="
+                    flex
+                    min-w-0
+                    w-full
+                    flex-col
+                    items-start
+                    md:flex-1
+                  "
+                >
+                  <p
+                    className="
+                      mb-2
+                      text-lg
+                      text-[#858585]
+
+                      sm:text-xl
+                    "
+                  >
+                    {feature.title}
+                  </p>
+
+                  <p
+                    className="
+                      mb-6
+                      max-w-md
+                      text-base
+                      leading-7
+                      text-white
+
+                      sm:mb-8
+                      sm:text-lg
+
+                      lg:text-xl
+                    "
+                  >
+                    {feature.description}
+                  </p>
+
+                  <a
+                    href={`${import.meta.env.BASE_URL}#final-cta`}
+                    className="
+                      inline-flex
+                      items-center
+                      gap-1
+                      text-sm
+                      text-[#e8ff9c]
+                      transition-opacity
+                      hover:opacity-70
+                    "
+                  >
+                    Commencer
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                </div>
+              </article>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
