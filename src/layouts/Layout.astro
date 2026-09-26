@@ -2,19 +2,27 @@
 interface Props {
   title?: string;
   description?: string;
-  ogImage?: string;
+  ogSlug?: string;
 }
 
 const {
   title = "SparksLyse, l'IA Open-Source",
   description = "Quand l'IA rencontre l'Open-Source",
-  ogImage = "assets/misc/TLFJn5MUBGGvBUhB0MtBafodB1g.jpg",
 } = Astro.props;
 
-const siteUrl =
-  Astro.site ??
-  new URL("https://marvideo2009.github.io/Lyse-AI-Community.github.io/");
-const canonicalUrl = new URL(Astro.url.pathname, siteUrl);
+const siteUrl = Astro.url;
+
+const pathname = Astro.url.pathname;
+
+const ogName =
+  pathname === "/"
+    ? "home"
+    : pathname
+        .replace(/^\/|\/$/g, "")
+        .replaceAll("/", "-")
+        .replace(/[^a-zA-Z0-9-_]/g, "-");
+
+const ogImage = `${siteUrl}/og/${ogName}.png`;
 
 import "../styles/global.css";
 import "../styles/fonts.css";
@@ -36,7 +44,7 @@ import Navbar from "../components/Navbar";
 
     <meta name="description" content={description} />
 
-    <link rel="canonical" href={canonicalUrl} />
+    <link rel="canonical" href={siteUrl.href} />
 
     <link rel="icon" href={`${import.meta.env.BASE_URL}logo.png`} />
     <link rel="apple-touch-icon" href={`${import.meta.env.BASE_URL}logo.png`} />
@@ -44,8 +52,12 @@ import Navbar from "../components/Navbar";
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:url" content={siteUrl.href} />
+
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
