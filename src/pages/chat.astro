@@ -498,14 +498,13 @@ import "../styles/chat.css";
 
     scrollToBottom();
 
+    const assistantMessage: Message = {
+      role: "assistant",
+      content: "",
+    };
+
+    const assistantElement = createMessageElement(assistantMessage);
     try {
-      const assistantMessage: Message = {
-        role: "assistant",
-        content: "",
-      };
-
-      const assistantElement = createMessageElement(assistantMessage);
-
       elements.messages?.appendChild(assistantElement);
 
       const bubble = assistantElement.querySelector("div:nth-child(2)");
@@ -535,10 +534,15 @@ import "../styles/chat.css";
           ? error.message
           : "Une erreur inconnue est survenue.";
 
-      addMessage({
-        role: "assistant",
-        content: `Erreur inattendue côté client : ${message}`,
-      });
+      const bubble = assistantElement.querySelector("div:nth-child(2)");
+
+      const paragraph = bubble?.querySelector("p");
+
+      if (!paragraph) {
+        throw new Error("Impossible de créer la réponse du chatbot.");
+      }
+
+      paragraph.innerHTML = `Erreur inattendue côté client : ${message}`
     } finally {
       setSending(false);
       input.focus();
