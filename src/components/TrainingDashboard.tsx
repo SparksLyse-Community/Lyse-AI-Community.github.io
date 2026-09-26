@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { 
-  Activity, 
   RefreshCw, 
   Maximize2, 
   Minimize2, 
@@ -12,9 +11,7 @@ import {
   AlertCircle,
   Play,
   Pause,
-  Layers,
-  TrendingUp,
-  Hourglass
+  Layers
 } from "lucide-react";
 import Button from "./ui/Button";
 
@@ -218,81 +215,38 @@ export default function TrainingDashboard({ imageUrl, alt }: TrainingDashboardPr
       </div>
 
       {/* Main Content Area */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Left Column: Visual Feed */}
-        <div className="lg:col-span-8 flex flex-col gap-4">
-          <div className="flex items-center justify-between px-2">
-            <span className="text-[10px] uppercase tracking-[0.2em] text-white/45 font-medium">Visualisation d'état</span>
-            <div className="flex items-center gap-2">
-              <button 
-                onClick={() => setActiveTab("visual")}
-                className={`text-[10px] uppercase tracking-wider px-3 py-1 rounded-full transition-all ${activeTab === "visual" ? "bg-white/10 text-white" : "text-white/30 hover:text-white/50"}`}
-              >
-                Direct
-              </button>
-              <button 
-                onClick={() => setActiveTab("metrics")}
-                className={`text-[10px] uppercase tracking-wider px-3 py-1 rounded-full transition-all ${activeTab === "metrics" ? "bg-white/10 text-white" : "text-white/30 hover:text-white/50"}`}
-              >
-                Métriques
-              </button>
-            </div>
+      <div class="flex flex-col gap-8">
+        {/* Visual Feed Section */}
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center justify-between px-2">
+            <span class="text-[10px] uppercase tracking-[0.2em] text-white/45 font-medium">Visualisation d'état</span>
           </div>
           
-          <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
-            {activeTab === "visual" ? (
-              <div className="h-full w-full flex items-center justify-center p-4">
-                {!imageLoaded && !imageError && (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#0a0a0a]/50 z-10">
-                    <RefreshCw className="w-6 h-6 text-[#e8ff9c] animate-spin" />
-                  </div>
-                )}
-                {imageError ? (
-                  <div className="flex flex-col items-center text-center gap-4">
-                    <AlertCircle className="w-8 h-8 text-white/20" />
-                    <p className="text-xs text-white/40">Flux temporairement indisponible</p>
-                  </div>
-                ) : (
-                  <img
-                    src={src}
-                    alt={alt}
-                    onLoad={() => setImageLoaded(true)}
-                    onError={() => {
-                      setImageLoaded(true);
-                      setImageError(true);
-                    }}
-                    className={`max-h-full max-w-full object-contain transition-opacity duration-700 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
-                  />
-                )}
-              </div>
-            ) : (
-              <div className="h-full w-full p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-                <MetricBox 
-                  label="Loss (Perte)" 
-                  value={statusData ? statusData.loss.toString() : "3.090"} 
-                  icon={<TrendingUp className="w-4 h-4" />}
-                  sub={`Phase: ${statusData ? statusData.type : "N/A"}`}
+          <div class="relative aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-white/2.5 backdrop-blur-sm">
+            <div class="h-full w-full flex items-center justify-center p-4">
+              {!imageLoaded && !imageError && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#0a0a0a]/50 z-10">
+                  <RefreshCw className="w-6 h-6 text-white/40 animate-spin" />
+                </div>
+              )}
+              {imageError ? (
+                <div className="flex flex-col items-center text-center gap-4">
+                  <AlertCircle className="w-8 h-8 text-white/20" />
+                  <p className="text-xs text-white/40">Flux temporairement indisponible</p>
+                </div>
+              ) : (
+                <img
+                  src={src}
+                  alt={alt}
+                  onLoad={() => setImageLoaded(true)}
+                  onError={() => {
+                    setImageLoaded(true);
+                    setImageError(true);
+                  }}
+                  className={`max-h-full max-w-full object-contain transition-opacity duration-700 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
                 />
-                <MetricBox 
-                  label="Progression" 
-                  value={statusData ? statusData.completion : "40.08%"} 
-                  icon={<Activity className="w-4 h-4" />}
-                  sub={statusData ? statusData.epoch : "3.81B tokens"}
-                />
-                <MetricBox 
-                  label="Vitesse" 
-                  value={statusData ? `${statusData.tps} t/s` : "9,016 t/s"} 
-                  icon={<Zap className="w-4 h-4" />}
-                  sub="Tokens par seconde"
-                />
-                <MetricBox 
-                  label="Estimation" 
-                  value={statusData ? statusData.eta : "175.4 h"} 
-                  icon={<Hourglass className="w-4 h-4" />}
-                  sub="Temps restant estimé"
-                />
-              </div>
-            )}
+              )}
+            </div>
             
             {/* Overlay info */}
             <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between pointer-events-none">
@@ -300,60 +254,13 @@ export default function TrainingDashboard({ imageUrl, alt }: TrainingDashboardPr
                 Live Feed • {new Date(timestamp).toLocaleTimeString()}
               </div>
               {isRefreshing && (
-                <div className="px-3 py-1.5 rounded-full bg-[#e8ff9c] text-black text-[9px] uppercase tracking-widest font-bold">
+                <div className="px-3 py-1.5 rounded-full bg-white text-black text-[9px] uppercase tracking-widest font-bold">
                   Synchronisation
                 </div>
               )}
             </div>
           </div>
         </div>
-
-        {/* Right Column: Logs / Terminal */}
-        <div className="lg:col-span-4 flex flex-col gap-4">
-          <div className="flex items-center justify-between px-2">
-            <span className="text-[10px] uppercase tracking-[0.2em] text-white/45 font-medium">Journal de bord</span>
-            <Terminal className="w-3 h-3 text-white/30" />
-          </div>
-          
-          <div className="flex-1 min-h-[300px] rounded-2xl border border-white/10 bg-white/2.5 backdrop-blur-sm overflow-hidden flex flex-col">
-            <div className="p-4 flex-1 overflow-y-auto space-y-3 scrollbar-thin scrollbar-thumb-white/10">
-              {logs.slice(-10).map((log, index) => {
-                const isSync = log.includes("SYNC") || log.includes("INIT");
-                return (
-                  <div key={index} className="flex gap-3">
-                    <span className="text-[9px] text-white/20 mt-1 font-mono">{index + 1}</span>
-                    <p className={`text-[11px] leading-relaxed font-mono ${isSync ? "text-[#e8ff9c]/80" : "text-white/50"}`}>
-                      {log.replace(/\[.*?\]/g, "")}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="p-3 border-t border-white/5 bg-white/5 flex items-center justify-between">
-              <span className="text-[9px] uppercase tracking-wider text-white/30">Pipeline: Active</span>
-              <div className="flex gap-1">
-                <div className="w-1 h-1 rounded-full bg-[#e8ff9c]"></div>
-                <div className="w-1 h-1 rounded-full bg-[#e8ff9c]/30"></div>
-                <div className="w-1 h-1 rounded-full bg-[#e8ff9c]/30"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function MetricBox({ label, value, icon, sub }: { label: string, value: string, icon: React.ReactNode, sub: string }) {
-  return (
-    <div className="p-5 rounded-xl border border-white/5 bg-white/5 flex flex-col justify-between">
-      <div className="flex items-start justify-between">
-        <span className="text-[10px] uppercase tracking-wider text-white/40">{label}</span>
-        <span className="text-[#e8ff9c]/40">{icon}</span>
-      </div>
-      <div className="mt-4">
-        <div className="text-2xl font-light text-white">{value}</div>
-        <div className="text-[10px] text-white/30 mt-1">{sub}</div>
       </div>
     </div>
   );
