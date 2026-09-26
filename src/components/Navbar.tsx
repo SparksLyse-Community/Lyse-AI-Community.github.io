@@ -105,21 +105,33 @@ export default function Navbar() {
           <Button
             variant="link"
             size="lg"
-            href="https://github.com/SparksLyse-Community"
+            href={`${import.meta.env.BASE_URL}equipe`}
             rel="noreferrer"
           >
-            Github
+            Equipe
           </Button>
 
-          <Button variant="link" size="lg" href={`${import.meta.env.BASE_URL}#faq`}>
+          <Button
+            variant="link"
+            size="lg"
+            href={`${import.meta.env.BASE_URL}#faq`}
+          >
             FAQ
           </Button>
 
-          <Button variant="link" size="lg" href={`${import.meta.env.BASE_URL}#soutien`} className="rounded-lg">
+          <Button
+            variant="link"
+            size="lg"
+            href={`${import.meta.env.BASE_URL}#soutien`}
+          >
             Soutenir le projet
           </Button>
 
-          <Button variant="link" size="lg" href={`${import.meta.env.BASE_URL}blog`}>
+          <Button
+            variant="link"
+            size="lg"
+            href={`${import.meta.env.BASE_URL}blog`}
+          >
             Blog
           </Button>
         </div>
@@ -194,27 +206,45 @@ export default function Navbar() {
           <Button
             variant="link"
             size="lg"
-            href="https://github.com/SparksLyse-Community"
+            href={`${import.meta.env.BASE_URL}equipe`}
             rel="noreferrer"
             className="rounded-lg"
-            target="_blank"
           >
-            Github
+            Equipe
           </Button>
 
-          <Button variant="link" size="lg" href={`${import.meta.env.BASE_URL}#faq`} className="rounded-lg">
+          <Button
+            variant="link"
+            size="lg"
+            href={`${import.meta.env.BASE_URL}#faq`}
+            className="rounded-lg"
+          >
             FAQ
           </Button>
 
-          <Button variant="link" size="lg" href={`${import.meta.env.BASE_URL}#soutien`} className="rounded-lg">
+          <Button
+            variant="link"
+            size="lg"
+            href={`${import.meta.env.BASE_URL}#soutien`}
+            className="rounded-lg"
+          >
             Soutenir le projet
           </Button>
 
-          <Button variant="link" size="lg" href={`${import.meta.env.BASE_URL}blog`} className="rounded-lg">
+          <Button
+            variant="link"
+            size="lg"
+            href={`${import.meta.env.BASE_URL}blog`}
+            className="rounded-lg"
+          >
             Blog
           </Button>
 
-          <Button variant="button-red" className="bg-[#dba0a0]/10! hover:bg-[#dba0a0]/20!" href={`${import.meta.env.BASE_URL}chat`}>
+          <Button
+            variant="button-red"
+            className="bg-[#dba0a0]/10! hover:bg-[#dba0a0]/20!"
+            href={`${import.meta.env.BASE_URL}chat`}
+          >
             Commencer
           </Button>
         </div>
