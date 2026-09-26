@@ -60,9 +60,3 @@ Il n'y a pas encore de scripts `dev`, `build`, `preview`, `lint` ou `format`. Le
 1. Lancez `npm run serve`.
 2. Ouvrez la page d'accueil et `/chat.html` dans un navigateur.
 3. Vérifiez les liens, les ressources et le comportement responsive.
-
-## Crédits
-
-Projet Framer Export / SparksLyse v1 WEB.
-
-Merci au projet [FramerExport](https://github.com/danbenba/FramerExport) pour l'outil de conversion de Framer vers du code statique, ainsi qu'à Arthur pour son template Framer.
