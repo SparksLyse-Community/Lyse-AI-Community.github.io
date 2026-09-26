@@ -74,7 +74,7 @@ main {
 }
 
 .legal-content a {
-  color: #e8ff9c;
+  color: #ffffff;
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
@@ -115,6 +115,6 @@ main {
 }
 
 :focus-visible {
-  outline: 2px solid #e8ff9c;
+  outline: 2px solid #ffffff;
   outline-offset: 4px;
 }

@@ -205,7 +205,7 @@ export default function FeatureTab() {
                 items-center
                 gap-1
                 text-sm
-                text-[#e8ff9c]
+                text-white
                 transition-opacity
                 hover:opacity-70
               "
