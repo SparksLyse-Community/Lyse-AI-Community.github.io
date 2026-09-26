@@ -1,5 +1,5 @@
 ---
-title: "LyseAI : on construit notre propre intelligence artificielle, de zéro"
+title: "SparksLyse : on construit notre propre intelligence artificielle, de zéro"
 pubDate: 2026-09-24
 description: "Présentation du projet."
 ---
