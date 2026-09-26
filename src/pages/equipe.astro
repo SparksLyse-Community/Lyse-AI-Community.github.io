@@ -1,0 +1,188 @@
+---
+import Layout from "../layouts/Layout.astro";
+import teamImage from "../assets/images/about3.jpg";
+import Profil from "@/components/Profil";
+---
+
+<Layout
+  title="Notre équipe | SparksLyse"
+  description="Découvrez la communauté qui construit SparksLyse, une IA open source."
+>
+  <main>
+    <section
+      class="mx-auto grid min-h-[75svh] w-full max-w-7xl items-center gap-10 px-6 py-16 md:px-10 md:py-24 lg:grid-cols-[1fr_0.9fr] lg:gap-16 lg:px-16"
+    >
+      <div>
+        <p class="mb-5 text-xs uppercase tracking-[0.18em] text-white/45">
+          SparksLyse Community
+        </p>
+        <h1
+          class="max-w-xl font-sans text-4xl font-normal leading-[1.08] text-white sm:text-5xl"
+        >
+          Notre équipe, c’est une communauté qui construit ensemble.
+        </h1>
+        <p class="mt-6 max-w-xl text-sm leading-7 text-white/60 sm:text-base">
+          SparksLyse est un projet open source autour de modèles de langage
+          développés en français. Le projet avance grâce aux contributions
+          techniques, aux expérimentations et aux retours de sa communauté.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href="https://github.com/SparksLyse-Community"
+            target="_blank"
+            rel="noreferrer"
+            class="inline-flex min-h-11 items-center border border-white/20 px-5 text-sm text-white transition hover:bg-white/10"
+          >
+            Voir les projets GitHub
+          </a>
+          <a
+            href="https://discord.gg/wraa3dGTjr"
+            target="_blank"
+            rel="noreferrer"
+            class="inline-flex min-h-11 items-center bg-[#e8ff9c] px-5 text-sm font-medium text-black transition hover:opacity-90"
+          >
+            Rejoindre la communauté
+          </a>
+        </div>
+      </div>
+
+      <figure
+        class="relative min-h-72 overflow-hidden border border-white/10 sm:min-h-96 rounded-md"
+      >
+        <img
+          src={teamImage.src}
+          alt="Visuel du projet SparksLyse"
+          class="absolute inset-0 h-full w-full object-cover"
+          loading="eager"
+        />
+        <figcaption
+          class="absolute inset-x-0 bottom-0 bg-black/70 px-5 py-4 text-xs text-white/70 backdrop-blur-sm"
+        >
+          Un projet open source, construit et entraîné en communauté.
+        </figcaption>
+      </figure>
+    </section>
+
+    <section
+      class="mx-auto w-full max-w-7xl px-6 pb-24 md:px-10 lg:px-16"
+      aria-labelledby="core-team-heading"
+    >
+      <div class="border-t border-white/10 pt-7">
+        <p class="mb-3 text-xs uppercase tracking-[0.18em] text-white/45">
+          Équipe principale
+        </p>
+        <h2
+          id="core-team-heading"
+          class="text-2xl font-normal text-white sm:text-3xl"
+        >
+          Les personnes derrière SparksLyse
+        </h2>
+        <p class="mt-3 max-w-2xl text-sm leading-7 text-white/55">
+          Membres publics. Les rôles ci-dessous
+          résument leurs contributions aux projets de l’équipe.
+        </p>
+
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          <Profil
+            username="Tonyx"
+            imageLink="https://avatars.githubusercontent.com/u/257786487?v=4"
+            link="https://github.com/Juste1dev"
+            role="Grand patron"
+            text="Contributions au training"
+          />
+          <Profil
+            username="Marvideo"
+            imageLink="https://avatars.githubusercontent.com/u/88560729?s=160&v=4"
+            link="https://github.com/Marvideo2009"
+            role="Référent training + Développement API et web"
+            text="Contributions au training et au site SparksLyse ainsi aux services API du projet."
+          />
+          <Profil
+            username="ElectroLynx"
+            imageLink="https://avatars.githubusercontent.com/u/168107535?s=160&v=4"
+            link="https://github.com/ElectroLynx"
+            role="Site web & bot Discord"
+            text="Contributions au site et au bot officiel de la communauté."
+          />
+          <Profil
+            username="Zerox"
+            imageLink="https://avatars.githubusercontent.com/u/216586172?v=4"
+            link="https://github.com/pauledithz"
+            role="Site web"
+            text="Contributions au site."
+          />
+          <Profil
+            username="Mianie Patooti"
+            imageLink="https://cdn.discordapp.com/avatars/1079422776068280473/2799a54c23ecdc3f87372f37c2021d0c.webp?size=4096"
+            link="https://discord.com/users/1079422776068280473"
+            role="Artistes"
+            text="Contributions a la création du design de SparksLyse."
+          />
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="mx-auto w-full max-w-7xl px-6 pb-24 md:px-10 md:pb-32 lg:px-16"
+    >
+      <div class="border-t border-white/10">
+        <h2 class="py-6 text-xl font-normal text-white sm:text-2xl">
+          Les contributions qui font avancer le projet
+        </h2>
+        <div class="grid border-t border-white/10 md:grid-cols-3">
+          <article class="border-b border-white/10 py-6 md:border-b-0 md:pr-8">
+            <p class="text-xs uppercase tracking-[0.14em] text-[#e8ff9c]">
+              01 / Code
+            </p>
+            <p class="mt-3 text-sm leading-7 text-white/60">
+              Le site et les outils du projet sont accessibles publiquement pour
+              être explorés et enrichis.
+            </p>
+            <a
+              href="https://github.com/SparksLyse-Community"
+              target="_blank"
+              rel="noreferrer"
+              class="mt-4 inline-block text-sm text-white underline decoration-white/25 underline-offset-4 transition hover:decoration-white"
+            >
+              Explorer le code
+            </a>
+          </article>
+          <article
+            class="border-b border-white/10 py-6 md:border-b-0 md:border-l md:px-8"
+          >
+            <p class="text-xs uppercase tracking-[0.14em] text-[#e8ff9c]">
+              02 / Entraînement
+            </p>
+            <p class="mt-3 text-sm leading-7 text-white/60">
+              Les expérimentations font progresser les modèles et leur
+              apprentissage du français.
+            </p>
+            <a
+              href={`${import.meta.env.BASE_URL}train`}
+              class="mt-4 inline-block text-sm text-white underline decoration-white/25 underline-offset-4 transition hover:decoration-white"
+            >
+              Suivre l’entraînement
+            </a>
+          </article>
+          <article class="py-6 md:border-l border-white/10 md:px-8">
+            <p class="text-xs uppercase tracking-[0.14em] text-[#e8ff9c]">
+              03 / Communauté
+            </p>
+            <p class="mt-3 text-sm leading-7 text-white/60">
+              Les échanges et retours d’expérience aident à orienter les
+              prochaines étapes de SparksLyse.
+            </p>
+            <a
+              href="https://discord.gg/wraa3dGTjr"
+              target="_blank"
+              rel="noreferrer"
+              class="mt-4 inline-block text-sm text-white underline decoration-white/25 underline-offset-4 transition hover:decoration-white"
+            >
+              Échanger sur Discord
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
